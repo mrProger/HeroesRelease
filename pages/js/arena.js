@@ -23,7 +23,7 @@ const initBattle = () => {
 }
 
 const updateHealthBars = (playerHealthBar, enemyHealthBar) => {
-    playerHealthBar.style.width = calcPercents(player.hp, player.stockHp);
+    playerHealthBar.style.width = calcPercents(player.hp, 5000);
     enemyHealthBar.style.width = calcPercents(enemy.hp, enemy.stockHp);
 }
 
