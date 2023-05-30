@@ -639,14 +639,16 @@ class QueryController {
 		session_start();
 		$healthArr = array(800, 1000, 1500);
 		$powerArr = array(200, 300, 400);
+		$defenseArr = array(100, 200, 300);
 		$expRewards = array(1, 2, 3);
 		$moneyRewards = array(1, 2, 3);
 		return json_encode(array(
 			"name" => "Узник",
-			"health" => $healthArr[rand(1, 3)],
-			"power" => $powerArr[rand(1, 3)],
-			"expRewards" => $expRewards[rand(1, 3)],
-			"moneyRewards" => $moneyRewards[rand(1, 3)]
+			"health" => $healthArr[rand(0, 2)],
+			"power" => $powerArr[rand(0, 2)],
+			"defense" => $defenseArr[rand(0, 2)],
+			"expRewards" => $expRewards[rand(0, 2)],
+			"moneyRewards" => $moneyRewards[rand(0, 2)]
 		));
 	}
 
@@ -662,7 +664,7 @@ class QueryController {
 		$user->money += $moneyRewards;
 		$user->exp += $expRewards;
 
-		if ($target === "player") {
+		if ($target === "enemy") {
 			$user->win_count += 1;
 		}
 

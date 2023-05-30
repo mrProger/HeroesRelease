@@ -282,7 +282,7 @@ function generateEnemy() {
       enemy.hp = resp.health;
       enemy.stockHp = resp.health;
       enemy.defense = resp.defense;
-      enemy.damage = resp.damage;
+      enemy.damage = resp.power;
       enemy.expRewards = resp.expRewards;
       enemy.moneyRewards = resp.moneyRewards;
     });
@@ -306,7 +306,7 @@ function getUserForArena() {
       player.hp = resp.health;
       player.stockHp = resp.health;
       player.defense = resp.defense;
-      player.damage = resp.damage;
+      player.damage = resp.power;
 
       interval = undefined;
     });

@@ -16,7 +16,7 @@ let enemy = {
     expRewards: 1,
     moneyRewards: 1
 };
-let interval = "a";
+let interval = undefined;
 
 const initBattle = () => {
     updateHealthBars();
@@ -28,6 +28,9 @@ const updateHealthBars = (playerHealthBar, enemyHealthBar) => {
 }
 
 const endBattle = (target) => {
+    clearInterval(interval);
+    interval = undefined;
+
     fetch("api/v1/endBattle", {
         method: "POST",
         headers: {
@@ -39,13 +42,15 @@ const endBattle = (target) => {
             expRewards: target === "enemy" ? enemy.expRewards : 0
         })
     }).then(() => {
-        if (target === "player") {
+        if (target === "enemy") {
             alert(`Вы победили!\nНаграда: ${enemy.moneyRewards} Монет и ${enemy.expRewards} Опыта`);
+            getUserForArena();
+            generateEnemy();
         } else {
             let result = confirm("Вы проиграли! Желаете родолжить?");
             if (result) {
-                generateEnemy();
                 getUserForArena();
+                generateEnemy();
             } else {
                 document.location = "/hero";
             }
@@ -55,13 +60,15 @@ const endBattle = (target) => {
 }
 
 const attack = (target, damage) => {
+    if (target.type === "enemy") {
+        if (interval === undefined) {
+            interval = setInterval(() => attack(player, enemy.damage), 1000);
+        }   
+    }
+
     if (target.hp <= 0) {
         endBattle(target.type);
         return;
-    }
-
-    if (interval === undefined) {
-        interval = setInterval(() => attack(player, enemy.damage), 1000);
     }
 
     if (target.hp > 0) {
