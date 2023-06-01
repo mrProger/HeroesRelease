@@ -20,6 +20,8 @@ let interval = undefined;
 
 const initBattle = () => {
     updateHealthBars();
+    document.querySelector("#player-health").innerText = player.hp;
+    document.querySelector("#rewardsMoney").innerText = enemy.moneyRewards;
 }
 
 const updateHealthBars = (playerHealthBar, enemyHealthBar) => {
@@ -64,6 +66,10 @@ const attack = (target, damage) => {
         if (interval === undefined) {
             interval = setInterval(() => attack(player, enemy.damage), 1000);
         }   
+    }
+    
+    if (target.type === "player") {
+        document.querySelector("#player-health").innerText = player.hp;
     }
 
     if (target.hp <= 0) {
