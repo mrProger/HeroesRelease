@@ -7,7 +7,9 @@ class ShopController {
         if ($data != null) {
             $status = QueryController::buyItemQuery(
                 $data["type"],
-                $data["itemId"]
+                $data["itemId"],
+                $data["money"],
+                $data["donateMoney"]
             );
             echo $status;
         } else {

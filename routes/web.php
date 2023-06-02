@@ -10,9 +10,7 @@ $router->get("setFraction", "PageController::setFraction");
 $router->get("hero", "PageController::hero");
 $router->get("shop", "PageController::shop");
 $router->get("rating", "PageController::rating");
-$router->get("quests", "PageController::quests");
 $router->get("battle", "PageController::battle");
-$router->get("mapSelection", "PageController::mapSelection");
 
 $router->get("debug/session_list", "PageController::debugSessionList");
 $router->get("debug/logout", "AuthController::logout");

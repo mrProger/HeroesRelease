@@ -55,18 +55,8 @@ class PageController {
         echo View::createFromTemplate($template);
     }
 
-    public static function quests() {
-        $template = new Template(__DIR__ . "/../pages/quests.html");
-        echo View::createFromTemplate($template);
-    }
-
     public static function battle() {
         $template = new Template(__DIR__ . "/../pages/battle.html");
-        echo View::createFromTemplate($template);
-    }
-
-    public static function mapSelection() {
-        $template = new Template(__DIR__ . "/../pages/map-selection.html");
         echo View::createFromTemplate($template);
     }
 

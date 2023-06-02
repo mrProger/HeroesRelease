@@ -29,7 +29,8 @@ class GameController {
 					"health" => $_SESSION["user"]->props["health"],
 					"defense" => $_SESSION["user"]->props["defense"],
 					"power" => $_SESSION["user"]->props["power"],
-					"exp" => $_SESSION["user"]->exp
+					"exp" => $_SESSION["user"]->exp,
+					"fraction" => $_SESSION["user"]->fraction
 				)
 			);
 		} else {

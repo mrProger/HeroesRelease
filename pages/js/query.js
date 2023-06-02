@@ -145,6 +145,40 @@ function loadHeroQuery() {
       document.querySelector("#player-power-bar").style.width = calcPercents(resp.power, 1000);
 
       document.querySelector("#player-level-bar").style.width = calcPercents(resp.exp, resp.level * 5);
+
+      switch (resp.fraction) {
+        case "castle":
+          document.querySelector("#heroImg").src = "/pages/img/card-castle.png";
+          break;
+
+        case "stronghold":
+          document.querySelector("#heroImg").src = "/pages/img/card-stronghold.png";
+          break;
+
+        case "tower":
+          document.querySelector("#heroImg").src = "/pages/img/card-tower.png";
+          break;
+
+        case "inferno":
+          document.querySelector("#heroImg").src = "/pages/img/card-inferno.png";
+          break;
+
+        case "dungeon":
+          document.querySelector("#heroImg").src = "/pages/img/card-dungeon.png";
+          break;
+
+        case "fortress":
+          document.querySelector("#heroImg").src = "/pages/img/card-fortress.png";
+          break;
+
+        case "citadel":
+          document.querySelector("#heroImg").src = "/pages/img/card-citadel.png";
+          break;
+
+        case "necropolis":
+          document.querySelector("#heroImg").src = "/pages/img/card-necropolis.png";
+          break;
+      }
     });
   });
 }
@@ -167,7 +201,7 @@ function addFeedbackQuery() {
   });
 }
 
-function buyItemQuery(type, id) {
+function buyItemQuery(type, id, price) {
   fetch("api/v1/buyItem", {
     method: "POST",
     headers: {
@@ -179,6 +213,20 @@ function buyItemQuery(type, id) {
     })
   }).then((response) => {
     return response.json().then((resp) => {
+      if (resp.response === "Item already buyed") {
+        resp.response = "Предмет уже куплен";
+      } else if (resp.response === "Not enough money") {
+        resp.response = "Недостаточно денег";
+      } else if (resp.response === "Item success buyed") {
+        resp.response = "Предмет успешно куплен";
+        if (price.type === "money") {
+          let money = parseInt(document.querySelector("#money").innerText);
+          document.querySelector("#money").innerText = money - price.count;
+        } else {
+          let donateMoney = parseInt(document.querySelector("#donateMoney").innerText);
+          document.querySelector("#donateMoney").innerText = donateMoney - price.count;
+        }
+      }
       alert(resp.response);
     });
   });
@@ -279,6 +327,10 @@ function generateEnemy() {
       document.querySelector("#enemy-health-bar").style.width = "100%";
       document.querySelector("#enemy-name").innerText = resp.name;
 
+      document.querySelector("#player-health").innerText = player.hp;
+      document.querySelector("#rewardsMoney").innerText = enemy.moneyRewards;
+      document.querySelector("#rewardsExp").innerText = enemy.expRewards;
+
       enemy.hp = resp.health;
       enemy.stockHp = resp.health;
       enemy.defense = resp.defense;
@@ -312,3 +364,14 @@ function getUserForArena() {
     });
   });
 }
+
+function getUserBalance() {
+  fetch("api/v1/loadProfile", {
+    method: "POST"
+  }).then((response) => {
+    return response.json().then((resp) => {
+      document.querySelector("#money").innerText = resp.money;
+      document.querySelector("#donateMoney").innerText = resp.donateMoney;
+    });
+  });
+} 

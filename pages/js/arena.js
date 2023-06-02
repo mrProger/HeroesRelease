@@ -20,8 +20,6 @@ let interval = undefined;
 
 const initBattle = () => {
     updateHealthBars();
-    document.querySelector("#player-health").innerText = player.hp;
-    document.querySelector("#rewardsMoney").innerText = enemy.moneyRewards;
 }
 
 const updateHealthBars = (playerHealthBar, enemyHealthBar) => {
@@ -45,7 +43,9 @@ const endBattle = (target) => {
         })
     }).then(() => {
         if (target === "enemy") {
-            alert(`Вы победили!\nНаграда: ${enemy.moneyRewards} Монет и ${enemy.expRewards} Опыта`);
+            alert(`Вы победили!`);
+            let money = parseInt(document.querySelector("#money").innerText);
+            document.querySelector("#money").innerText = money + parseInt(enemy.moneyRewards);
             getUserForArena();
             generateEnemy();
         } else {
@@ -67,10 +67,6 @@ const attack = (target, damage) => {
             interval = setInterval(() => attack(player, enemy.damage), 1000);
         }   
     }
-    
-    if (target.type === "player") {
-        document.querySelector("#player-health").innerText = player.hp;
-    }
 
     if (target.hp <= 0) {
         endBattle(target.type);
@@ -80,5 +76,9 @@ const attack = (target, damage) => {
     if (target.hp > 0) {
         target.hp -= damage;
         updateHealthBars(player.healthBar, enemy.healthBar);
+    }
+
+    if (target.type === "player") {
+        document.querySelector("#player-health").innerText = player.hp;
     }
 }
