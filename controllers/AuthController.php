@@ -97,7 +97,7 @@ class AuthController {
 				$user_model->staffUsed,
 				$user_model->crystalUsed
 			);
-			if ($user["response"] == "Account success registered") {
+			if ($user->response == "Account success registered") {
 				$_SESSION["user"] = $user_model;
 			}
 			echo json_encode($user_model);
