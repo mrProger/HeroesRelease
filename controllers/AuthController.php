@@ -57,7 +57,8 @@ class AuthController {
 					array(
 						"1" => $user->crystal1_used,
 						"2" => $user->crystal2_used
-					)
+					),
+					$user->is_admin
 				);
 			}
 			echo $user;
@@ -95,7 +96,8 @@ class AuthController {
 				$user_model->staffBuyed,
 				$user_model->crystalBuyed,
 				$user_model->staffUsed,
-				$user_model->crystalUsed
+				$user_model->crystalUsed,
+				$user_model->isAdmin
 			);
 			if ($user->response == "Account success registered") {
 				$_SESSION["user"] = $user_model;

@@ -22,13 +22,6 @@ $('body').on('click', '.password-control2', function () {
     return false;
 });
 
-$('#run-link').click(function () {
-    if (fraction == undefined) {
-        alert('Может ты уже выберешь фракцию, не?!');
-        return;
-    }
-});
-
 $('#registration').click(function () {
     let fields = [
         document.querySelector('#loginInput').value,

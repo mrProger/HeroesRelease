@@ -12,9 +12,6 @@ $router->get("shop", "PageController::shop");
 $router->get("rating", "PageController::rating");
 $router->get("battle", "PageController::battle");
 
-$router->get("debug/session_list", "PageController::debugSessionList");
-$router->get("debug/logout", "AuthController::logout");
-
 $router->post("api/v1/login", "AuthController::login");
 $router->post("api/v1/registration", "AuthController::registration");
 $router->post("api/v1/logout", "AuthController::logout");
@@ -31,3 +28,5 @@ $router->post("api/v1/getGoldTop", "GameController::getGoldTop");
 $router->post("api/v1/getWinCountTop", "GameController::getWinCountTop");
 $router->post("api/v1/generateEnemy", "ArenaController::generateEnemy");
 $router->post("api/v1/endBattle", "ArenaController::endBattle");
+
+$router->get("api/v1/admin/isAdmin", "AdminController::isAdmin");

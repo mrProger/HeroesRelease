@@ -43,20 +43,16 @@ const endBattle = (target) => {
         })
     }).then(() => {
         if (target === "enemy") {
-            alert(`Вы победили!`);
+            document.querySelector("#battle-modal-label").innerText = "Вы победили!";
+            new bootstrap.Modal(document.querySelector("#battleModal")).show();
             let money = parseInt(document.querySelector("#money").innerText);
             document.querySelector("#money").innerText = money + parseInt(enemy.moneyRewards);
-            getUserForArena();
-            generateEnemy();
         } else {
-            let result = confirm("Вы проиграли! Желаете родолжить?");
-            if (result) {
-                getUserForArena();
-                generateEnemy();
-            } else {
-                document.location = "/hero";
-            }
+            document.querySelector("#battle-modal-label").innerText = "Вы проиграли!";
+            new bootstrap.Modal(document.querySelector("#battleModal")).show();
         }
+        getUserForArena();
+        generateEnemy();
         clearInterval(interval);
     });
 }

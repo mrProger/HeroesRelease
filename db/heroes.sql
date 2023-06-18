@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS `users` (
     staff1_used TEXT,
     staff2_used TEXT,
     crystal1_used TEXT,
-    crystal2_used TEXT
+    crystal2_used TEXT,
+    is_admin BOOLEAN
 );
 
 CREATE TABLE IF NOT EXISTS `feedbacks` (

@@ -15,6 +15,7 @@ class User extends Model {
     public array $crystalBuyed;
     public array $staffUsed;
     public array $crystalUsed;
+    public bool $isAdmin;
 
     public function __construct(
         string $login, 
@@ -51,7 +52,8 @@ class User extends Model {
         array $crystalUsed = array(
             "1" => "null",
             "2" => "null"
-        )
+        ),
+        bool $isAdmin = false
     ) {
         $this->login = $login;
         $this->password = $password;
@@ -67,6 +69,7 @@ class User extends Model {
         $this->crystalBuyed = $crystalBuyed;
         $this->staffUsed = $staffUsed;
         $this->crystalUsed = $crystalUsed;
+        $this->isAdmin = $isAdmin;
     }
 
     public function getLogin() : string {
@@ -123,5 +126,9 @@ class User extends Model {
 
     public function getCrystalUsed() : array {
         return $this->crystalUsed;
+    }
+
+    public function getIsAdmin() : bool {
+        return $this->isAdmin;
     }
 }

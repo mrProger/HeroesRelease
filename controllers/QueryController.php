@@ -25,7 +25,8 @@ class QueryController {
 		array $staffBuyed,
 		array $crystalBuyed,
 		array $staffUsed,
-		array $crystalUsed
+		array $crystalUsed,
+		bool $isAdmin
 	) {
 		global $orm;
 		$orm->connect();
@@ -59,6 +60,7 @@ class QueryController {
 		$user->staff2_used = $staffUsed["2"];
 		$user->crystal1_used = $crystalUsed["1"];
 		$user->crystal2_used = $crystalUsed["2"];
+		$user->is_admin = $isAdmin;
 		R::store($user);
 		return array(
 			"response" => "Account success registered"

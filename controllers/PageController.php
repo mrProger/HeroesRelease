@@ -5,6 +5,11 @@ use PHPView\View;
 use PHPExceptionHandler\ExceptionHandler;
 
 class PageController {
+    public static function modal() {
+        $template = new Template(__DIR__ . "/../pages/modal.html");
+        echo View::createFromTemplate($template);
+    }
+
 	public static function index() {
         $template = new Template(__DIR__ . "/../pages/index.html");
         echo View::createFromTemplate($template);

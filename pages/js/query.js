@@ -13,14 +13,13 @@ function registrationQuery(login, email, password) {
     return response.json().then((resp) => { 
       if (resp.login) {
         localStorage.setItem("user", JSON.stringify(resp));
-        alert("Вы успешно зарегистрировались");
         location.href = "/hero";
       } else {
-        console.log(resp.response);
-        alert(resp.response);
         if (resp.response === "You already in account") {
           location.href = "/hero";
         }
+        document.querySelector("#registration-modal-label").innerText = resp.response;
+        new bootstrap.Modal(document.querySelector("#registrationModal")).show();
       }
     });
   });
@@ -42,11 +41,11 @@ function loginQuery(login, password) {
         localStorage.setItem("user", JSON.stringify(resp));
         location.href = "/hero";
       } else {
-        console.log(resp.response);
-        alert(resp.response);
         if (resp.response === "You already in account") {
           location.href = "/hero";
         }
+        document.querySelector("#login-modal-label").innerText = resp.response;
+        new bootstrap.Modal(document.querySelector("#loginModal")).show();
       }
     });
   });
@@ -98,7 +97,6 @@ function setFractionQuery(fraction) {
       if (resp.response === "Fraction success setted") {
         location.href = "/hero";
       } else {
-        alert(resp.response);
         if (resp.response === "Fraction already setted") {
           location.href = "/hero";
         }
@@ -196,8 +194,11 @@ function addFeedbackQuery() {
       message: document.querySelector("#messageInput").value
     })
   }).then(() => {
-    alert("Обращение успешно отправлено!");
-    location.reload();
+    document.querySelector("#loginInput").value = "";
+    document.querySelector("#emailInput").value = "";
+    document.querySelector("#themeInput").value = "";
+    document.querySelector("#messageInput").value = "";
+    new bootstrap.Modal(document.querySelector("#addFeedbackModal")).show();
   });
 }
 
@@ -227,7 +228,8 @@ function buyItemQuery(type, id, price) {
           document.querySelector("#donateMoney").innerText = donateMoney - price.count;
         }
       }
-      alert(resp.response);
+      document.querySelector("#shop-modal-label").innerText = resp.response;
+      new bootstrap.Modal(document.querySelector("#shopModal")).show();
     });
   });
 }
@@ -375,3 +377,15 @@ function getUserBalance() {
     });
   });
 } 
+
+function isAdminQuery() {
+  fetch("api/v1/admin/isAdmin", {
+    method: "GET"
+  }).then((response) => {
+    return response.json().then((resp) => {
+      if (!resp.response) {
+        location.href = "/";
+      }
+    });
+  });
+}
