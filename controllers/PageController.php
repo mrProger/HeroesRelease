@@ -5,11 +5,6 @@ use PHPView\View;
 use PHPExceptionHandler\ExceptionHandler;
 
 class PageController {
-    public static function modal() {
-        $template = new Template(__DIR__ . "/../pages/modal.html");
-        echo View::createFromTemplate($template);
-    }
-
 	public static function index() {
         $template = new Template(__DIR__ . "/../pages/index.html");
         echo View::createFromTemplate($template);
@@ -65,8 +60,8 @@ class PageController {
         echo View::createFromTemplate($template);
     }
 
-    public static function debugSessionList() {
-        session_start();
-        echo json_encode($_SESSION);
+    public static function admin() {
+        $template = new Template(__DIR__ . "/../pages/admin.html");
+        echo View::createFromTemplate($template);
     }
 }

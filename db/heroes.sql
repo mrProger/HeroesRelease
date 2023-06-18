@@ -35,3 +35,18 @@ CREATE TABLE IF NOT EXISTS `feedbacks` (
     theme TEXT,
     message TEXT
 );
+
+CREATE TABLE IF NOT EXISTS `news` (
+    id INTEGER PRIMARY KEY,
+    title TEXT,
+    body TEXT,
+    image TEXT
+);
+
+CREATE TABLE IF NOT EXISTS `items` (
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    price INTEGER,
+    money_type TEXT,
+    image TEXT
+);

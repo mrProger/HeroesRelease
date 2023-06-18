@@ -28,6 +28,7 @@ include __DIR__ . '/controllers/FeedbackController.php';
 include __DIR__ . '/controllers/GameController.php';
 include __DIR__ . '/controllers/ShopController.php';
 include __DIR__ . '/controllers/ArenaController.php';
+include __DIR__ . '/controllers/AdminController.php';
 
 // Подключение файла с маршрутами
 include __DIR__ . '/routes/web.php';

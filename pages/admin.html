@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Shop</title>
+		<!--CSS-->
+		<link rel="stylesheet" href="/pages/css/style.css" type="text/css">
+		<!--Animate-->
+		<link rel="stylesheet" href="/pages/css/animate.min.css">
+		<!--Bootstrap CSS-->
+		<link href="/pages/css/bootstrap.min.css" rel="stylesheet" >
+		<!--Owl Slider CSS-->
+		<link src="/pages/css/owl.carousel.min.css">
+		<link src="/pages/css/owl.theme.default.min.css">
+		<!--Icon Tab-->
+		<link rel="icon" type="image/png" href="/pages/img/logo.png" />
+	</head>
+	<body class="shop">
+			<div class="object">
+				<div class="container">
+					<div class="row">
+						<div class="logo">
+							<h1 class="game-logo text-center">
+								<a href="/">Heroes</a>
+							</h1>
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid">
+					<div class="line-game">
+						<img src="/pages/img/game-line.png" alt="game-line">
+					</div>
+				</div>
+                <div class="btn-attack m-auto animate__animated animate__fadeInUp">
+                    <img src="/pages/img/line-attack.png" class="line-attack">
+                    <button class="btn attack" onclick="new bootstrap.Modal(document.querySelector('#addNewsModal')).show()">Добавить новость</button>
+                    <img src="/pages/img/line-attack.png" class="line-attack">
+                </div>
+                <div class="btn-attack m-auto animate__animated animate__fadeInUp">
+                    <img src="/pages/img/line-attack.png" class="line-attack">
+                    <button class="btn attack" onclick="new bootstrap.Modal(document.querySelector('#addShopItemModal')).show()">Добавить товар в магазин</button>
+                    <img src="/pages/img/line-attack.png" class="line-attack">
+                </div>
+				<div class="container-fluid">
+					<div class="line-game-bottom">
+						<img src="/pages/img/game-line.png" alt="game-line">
+					</div>
+				</div>
+                <!-- Add Shop Item Modal -->
+				<div class="modal fade" id="addShopItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close">
+									<img src="/pages/img/close.svg" alt="close">
+								</button>
+							</div>
+							<div class="modal-body" id="add-shop-item-modal-body">
+                                <h2 class="text-center">Добавление предмета</h2>
+                                <input>
+                                <!--Добавить поля-->
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn close" data-bs-dismiss="modal">Добавить</button>
+                                <button type="button" class="btn close" data-bs-dismiss="modal">Отмена</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Add News Modal -->
+				<div class="modal fade" id="addNewsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close">
+									<img src="/pages/img/close.svg" alt="close">
+								</button>
+							</div>
+							<div class="modal-body" id="add-news-modal-body">
+                                <h2 class="text-center">Добавление новости</h2>
+                                <input>
+                                <!--Добавить поля-->
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn close" data-bs-dismiss="modal">Добавить</button>
+                                <button type="button" class="btn close" data-bs-dismiss="modal">Отмена</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<!--JQuery link-->
+	<script src="/pages/js/jquery.js"></script>
+	<!--Bootstrap JS-->
+	<script src="/pages/js/bootstrap.bundle.min.js"></script>
+	<!--JS-->
+	<script src="/pages/js/script.js"></script>
+	<!--Query JS-->
+	<script src="/pages/js/query.js"></script>
+	<script>
+		isAdminQuery();
+	</script>
+</html>

@@ -11,6 +11,7 @@ $router->get("hero", "PageController::hero");
 $router->get("shop", "PageController::shop");
 $router->get("rating", "PageController::rating");
 $router->get("battle", "PageController::battle");
+$router->get("admin", "PageController::admin");
 
 $router->post("api/v1/login", "AuthController::login");
 $router->post("api/v1/registration", "AuthController::registration");
