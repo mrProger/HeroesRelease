@@ -42,6 +42,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="/profile">Учетная запись</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link hidden" href="javascript:logoutQuery()">Выйти</a>
+						</li>
 					</ul>
 				  </div>
 				</div>
@@ -147,4 +150,7 @@
 	<script src="/pages/js/script.js"></script>
 	<!--JS-->
 	<script src="/pages/js/query.js"></script>
+	<script>
+		isAuthorizedQuery();
+	</script>
 </html>

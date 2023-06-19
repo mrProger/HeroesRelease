@@ -40,6 +40,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="/profile">Учетная запись</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link hidden" href="javascript:logoutQuery()">Выйти</a>
+						</li>
 					</ul>
 				  </div>
 				</div>
@@ -449,8 +452,10 @@
 	<script src="/pages/js/owl.carousel.min.js"></script>
 	<!--JS-->
 	<script src="/pages/js/script.js"></script>
+	<script src="/pages/js/query.js"></script>
 	<!--JS Snow-->
 	<script>
+		isAuthorizedQuery();
 		document.addEventListener("DOMContentLoaded", () => {
 			for (let i = 0; i < 45; i++) {
 				let snow = document.createElement("div");

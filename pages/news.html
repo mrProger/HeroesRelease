@@ -49,6 +49,9 @@
             <li class="nav-item">
               <a class="nav-link" href="/profile">Учетная запись</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link hidden" href="javascript:logoutQuery()">Выйти</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -64,27 +67,6 @@
 
   <div class="news">
     <div class="container">
-      <!--<div class="container-news justify-content-center row">
-        <div class="col-6">
-          <div class="block-news">
-            <img src="/pages/img/news.png" />
-          </div>
-        </div>
-        <div class="block-news-title col-6">
-          <ul class="title-link-list">
-            <h1 class="fresh">Обновление локации «Подземелье»</h1>
-            <li class="title-link-news">
-              Сегодня у нас акция позови друг к другу и получи бан Сегодня
-              у нас акция позови друг к другу и получи бан Сегодня у нас
-              акция позови друг к другу и получи бан Сегодня у нас акция
-              позови друг к другу и получи бан Сегодня у нас акция позови
-              друг к другу и получи бан Сегодня у нас акция позови друг к
-              другу и получи бан Сегодня у нас акция позови друг к другу и
-              получи бан Сегодня у нас акция
-            </li>
-          </ul>
-        </div>
-      </div>-->
     </div>
   </div>
 
@@ -128,6 +110,7 @@
       snow.classList.add("snow2");
       document.body.appendChild(snow);
     }
+    isAuthorizedQuery();
     getNewsQuery();
   });
 </script>
