@@ -62,8 +62,18 @@ function isAuthorizedQuery() {
         }
       } else if (location.pathname === "/login" || location.pathname === "/registration") {
         location.href = "/hero";
-      } else {
-        document.querySelector(".nav-link .hidden").classList.remove("hidden");
+      }
+    });
+  });
+}
+
+function isAuthorizedSiteQuery() {
+  fetch("api/v1/isAuthorized", {
+    method: "POST"
+  }).then((response) => {
+    return response.json().then((resp) => {
+      if (resp.response) {
+        document.querySelector(".nav-link.hidden").classList.remove("hidden");
       }
     });
   });
