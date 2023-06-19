@@ -242,3 +242,99 @@ $('.select').each(function () {
         }
     });
 });
+
+function renderNews(title, body, image) {
+    let news = document.createElement("div");
+    news.classList.add("container-news", "justify-content-center", "row");
+
+    let colDiv = document.createElement("div");
+    colDiv.classList.add("col-6");
+
+    let imageDiv = document.createElement("div");
+    imageDiv.classList.add("block-news");
+
+    let img = document.createElement("img");
+    img.src = image;
+    img.setAttribute("alt", "news");
+
+    imageDiv.appendChild(img);
+    colDiv.appendChild(imageDiv);
+
+    let titleDiv = document.createElement("div");
+    titleDiv.classList.add("block-news-title", "col-6");
+
+    let bodyUl = document.createElement("ul");
+    bodyUl.classList.add("title-link-list");
+
+    let titleH1 = document.createElement("h1");
+    titleH1.classList.add("fresh");
+    titleH1.innerText = title;
+
+    let textLi = document.createElement("li");
+    textLi.classList.add("title-link-news");
+    textLi.innerHTML = body;
+
+    bodyUl.appendChild(titleH1);
+    bodyUl.appendChild(textLi);
+    titleDiv.appendChild(bodyUl);
+
+    news.appendChild(colDiv);
+    news.appendChild(titleDiv);
+
+    document.querySelector(".news>.container").appendChild(news);
+}
+
+function renderShopItem(name, price, money_type, image) {
+    let item = document.createElement("div");
+    item.classList.add("col-lg-4");
+
+    let bodyDiv = document.createElement("div");
+    bodyDiv.classList.add("card-fraction", "card");
+
+    let bodyA = document.createElement("a");
+    bodyA.href = "#";
+
+    let itemCardDiv = document.createElement("div");
+    itemCardDiv.classList.add("card-shop-6", "card-body", "coin-animate", "animate__animated", "animate__fadeInRight");
+
+    let bgCardDiv = document.createElement("div");
+    bgCardDiv.classList.add("bg-img-card-border");
+    bgCardDiv.innerHTML = '<img src="/pages/img/bg-card-shop.png" alt="bg-card"';
+
+    let imgDiv = document.createElement("div");
+    imgDiv.classList.add("bg-img-card");
+    imgDiv.innerHTML = `<img src="${image}" alt="item">`;
+
+    let titleDiv = document.createElement("div");
+    titleDiv.classList.add("title-card-fraction");
+
+    let titleH1 = document.createElement("h1");
+    titleH1.classList.add("title-card", "text-center");
+    titleH1.innerText = name;
+
+    titleDiv.appendChild(titleH1);
+
+    let priceDiv = document.createElement("div");
+    priceDiv.classList.add("coin-shop", "d-flex");
+
+    let priceP = document.createElement("p");
+    priceP.classList.add("coin");
+    priceP.innerText = price;
+
+    let priceImg = document.createElement("img");
+    priceImg.src = money_type === "common" ? "/pages/img/coin-silver.png" : "/pages/img/coin-gold.png";
+    priceImg.setAttribute("alt", money_type);
+
+    priceDiv.appendChild(priceP);
+    priceDiv.appendChild(priceImg);
+
+    itemCardDiv.appendChild(bgCardDiv);
+    itemCardDiv.appendChild(imgDiv);
+    itemCardDiv.appendChild(titleDiv);
+    itemCardDiv.appendChild(priceDiv);
+
+    bodyA.appendChild(itemCardDiv);
+    bodyDiv.appendChild(bodyA);
+    item.appendChild(bodyDiv);
+    document.querySelector("#other-items").appendChild(item);
+}

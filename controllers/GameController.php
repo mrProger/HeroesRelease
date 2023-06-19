@@ -101,4 +101,9 @@ class GameController {
 	$winCountTop = QueryController::getWinCountTopQuery();
 	echo $winCountTop;
   }
+
+  public static function getNews() {
+	$news = QueryController::getNewsQuery();
+	echo $news;
+  }
 }

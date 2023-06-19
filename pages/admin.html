@@ -59,11 +59,40 @@
 							</div>
 							<div class="modal-body" id="add-shop-item-modal-body">
                                 <h2 class="text-center">Добавление предмета</h2>
-                                <input>
-                                <!--Добавить поля-->
+                                <div class="d-flex justify-content-center">
+									<div class="input-feedback">
+										<label for="validationCustom01" class="form-label">Название</label>
+										<input type="text" id="itemNameInput" class="login form-control" id="validationCustom01" aria-describedby="emailHelp" autocomplete="off" placeholder="Название">
+									</div>
+								</div>
+								<div class="d-flex justify-content-center">
+									<div class="input-feedback">
+										<label for="validationCustom01" class="form-label">Цена</label>
+										<input id="itemPriceInput" type="number" for="validationCustom01" class="login form-control" id="validationCustom01" aria-describedby="emailHelp" autocomplete="off" placeholder="Цена" value="0">
+									</div>
+								</div>
+								<div class="d-flex justify-content-center">
+									<div class="input-feedback">
+										<p>Тип валюты</p>
+										<div>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="itemMoneyTypeCommon" checked>
+											<label class="form-check-label" for="itemMoneyTypeCommon" style="font-size: 16px;margin-top: 5%;margin-left: -3%">Обычная</label>
+										</div>
+										<div>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="itemMoneyTypeDonate">
+											<label class="form-check-label" for="itemMoneyTypeDonate" style="font-size: 16px;margin-top: 5%;margin-left: -3%">Донат</label>
+										</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-center">
+									<div class="input-feedback">
+										<label for="itemImageInput" class="form-label">Изображение</label>
+										<input id="itemImageInput" class="image-input" name="postImage" type="file" accept="image/*">
+									</div>
+								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn close" data-bs-dismiss="modal">Добавить</button>
+								<button type="button" class="btn close" data-bs-dismiss="modal" onclick="addItemQuery()">Добавить</button>
                                 <button type="button" class="btn close" data-bs-dismiss="modal">Отмена</button>
 							</div>
 						</div>
@@ -78,18 +107,52 @@
 									<img src="/pages/img/close.svg" alt="close">
 								</button>
 							</div>
-							<div class="modal-body" id="add-news-modal-body">
+							<div class="row modal-body" id="add-news-modal-body">
                                 <h2 class="text-center">Добавление новости</h2>
-                                <input>
-                                <!--Добавить поля-->
+                                <div class="d-flex justify-content-center">
+									<div class="input-feedback">
+										<label for="validationCustom01" class="form-label">Заголовок</label>
+										<input type="text" id="newsTitleInput" class="login form-control" id="validationCustom01" aria-describedby="emailHelp" autocomplete="off" placeholder="Заголовок">
+									</div>
+								</div>
+								<div class="input-feedback-message d-flex justify-content-center m-auto w-100">
+									<div class="input-feedback" style="margin-left: 5%">
+										<label for="validationCustom01" class="form-label">Текст новости</label>
+										<textarea id="newsBodyInput" class="message form-control" style="margin-left: -1%;width: 95% !important" id="exampleFormControlTextarea1" rows="3" placeholder="Текст новости"></textarea>
+									</div>
+								</div>
+								<div class="d-flex justify-content-center">
+									<div class="input-feedback">
+										<label for="newsImageInput" class="form-label">Изображение</label>
+										<input id="newsImageInput" class="image-input" name="postImage" type="file" accept="image/*">
+									</div>
+								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn close" data-bs-dismiss="modal">Добавить</button>
+								<button type="button" class="btn close" data-bs-dismiss="modal" onclick="addNewsQuery()">Добавить</button>
                                 <button type="button" class="btn close" data-bs-dismiss="modal">Отмена</button>
 							</div>
 						</div>
 					</div>
 				</div>
+				<!-- Info Modal -->
+				<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close">
+							<img src="/pages/img/close.svg" alt="close">
+						  </button>
+						</div>
+						<div class="modal-body">
+						  <h1 class="text-center" id="info-modal-label"></h1>
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn close" data-bs-dismiss="modal">ОК</button>
+						</div>
+					  </div>
+					</div>
+				  </div>
 			</div>
 		</div>
 	</body>

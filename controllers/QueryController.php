@@ -681,4 +681,47 @@ class QueryController {
 		$_SESSION["user"]->level = $user->level;
 		$_SESSION["user"]->winCount = $user->win_count;
 	}
+
+	public static function getItemsQuery() {
+		global $orm;
+		$orm->connect();
+		$items = R::findAll("items");
+		if ($items == null) {
+			return json_encode(array("response" => "Предметы не найдены"));
+		}
+		return json_encode($items);
+	}
+
+	public static function getNewsQuery() {
+		global $orm;
+		$orm->connect();
+		$news = R::findAll("news");
+		if ($news == null) {
+			return json_encode(array("response" => "Новости не найдены"));
+		}
+		return json_encode($news);
+	}
+
+	public static function addNewsQuery(string $title, string $body, string $image) {
+		global $orm;
+		$orm->connect();
+		$news = R::dispense("news");
+		$news->title = $title;
+		$news->body = $body;
+		$news->image = $image;
+		R::store($news);
+		return json_encode(["response" => "Новость успешно добавлена"]);
+	}
+
+	public static function addItemQuery(string $name, int $price, string $money_type, string $image) {
+		global $orm;
+		$orm->connect();
+		$item = R::dispense("items");
+		$item->name = $name;
+		$item->price = $price;
+		$item->money_type = $money_type;
+		$item->image = $image;
+		R::store($item);
+		return json_encode(["response" => "Предмет успешно добавлен"]);
+	}
 }

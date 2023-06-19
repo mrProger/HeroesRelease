@@ -10,7 +10,7 @@ function registrationQuery(login, email, password) {
       password: password
     })
   }).then((response) => {
-    return response.json().then((resp) => { 
+    return response.json().then((resp) => {
       if (resp.login) {
         localStorage.setItem("user", JSON.stringify(resp));
         location.href = "/hero";
@@ -36,7 +36,7 @@ function loginQuery(login, password) {
       password: password
     })
   }).then((response) => {
-    return response.json().then((resp) => { 
+    return response.json().then((resp) => {
       if (resp.id) {
         localStorage.setItem("user", JSON.stringify(resp));
         location.href = "/hero";
@@ -71,7 +71,7 @@ function fractionSettedQuery() {
   fetch(`api/v1/fractionSetted`, {
     method: "POST"
   }).then((response) => {
-    return response.json().then((resp) => { 
+    return response.json().then((resp) => {
       if (location.pathname !== "/setFraction") {
         if (!resp.response) {
           location.href = "/setFraction";
@@ -356,7 +356,7 @@ function getUserForArena() {
 
       document.querySelector("#player-power").innerText = resp.power;
       document.querySelector("#player-power-bar").style.width = calcPercents(resp.power, 1000);
-    
+
       player.hp = resp.health;
       player.stockHp = resp.health;
       player.defense = resp.defense;
@@ -376,7 +376,7 @@ function getUserBalance() {
       document.querySelector("#donateMoney").innerText = resp.donateMoney;
     });
   });
-} 
+}
 
 function isAdminQuery() {
   fetch("api/v1/admin/isAdmin", {
@@ -385,6 +385,78 @@ function isAdminQuery() {
     return response.json().then((resp) => {
       if (!resp.response) {
         location.href = "/";
+      }
+    });
+  });
+}
+
+function addItemQuery() {
+  let image = document.querySelector("#itemImageInput").files[0];
+  let formData = new FormData();
+
+  formData.append("name", document.querySelector("#itemNameInput").value);
+  formData.append("price", document.querySelector("#itemPriceInput").value);
+  formData.append("money_type", document.querySelector("#itemMoneyTypeCommon").checked ? "common" : "donate");
+  formData.append("image", image, image.name);
+
+  fetch("api/v1/admin/addItem", {
+    method: "POST",
+    body: formData
+  }).then((response) => {
+    return response.json().then((resp) => {
+      document.querySelector("#info-modal-label").innerText = resp.response;
+      new bootstrap.Modal(document.querySelector("#infoModal")).show();
+
+      document.querySelector("#itemNameInput").value = "";
+      document.querySelector("#itemPriceInput").value = "";
+      document.querySelector("#itemMoneyTypeCommon").checked = true;
+      document.querySelector("#itemImageInput").value = "";
+    });
+  });
+}
+
+function addNewsQuery() {
+  let image = document.querySelector("#newsImageInput").files[0];
+  let formData = new FormData();
+
+  formData.append("title", document.querySelector("#newsTitleInput").value);
+  formData.append("body", document.querySelector("#newsBodyInput").value);
+  formData.append("image", image, image.name);
+
+  fetch("api/v1/admin/addNews", {
+    method: "POST",
+    body: formData
+  }).then((response) => {
+    return response.json().then((resp) => {
+      document.querySelector("#info-modal-label").innerText = resp.response;
+      new bootstrap.Modal(document.querySelector("#infoModal")).show();
+
+      document.querySelector("#newsTitleInput").value = "";
+      document.querySelector("#newsBodyInput").value = "";
+      document.querySelector("#newsImageInput").value = "";
+    });
+  });
+}
+
+function getItemsQuery() {
+  fetch("api/v1/getItems", {
+    method: "GET"
+  }).then((response) => {
+    return response.json().then((resp) => {
+      if (!resp.response) {
+        Object.keys(resp).map((item) => renderShopItem(resp[item].name, resp[item].price, resp[item].money_type, resp[item].image));
+      }
+    });
+  });
+}
+
+function getNewsQuery() {
+  fetch("api/v1/getNews", {
+    method: "GET"
+  }).then((response) => {
+    return response.json().then((resp) => {
+      if (!resp.response) {
+        Object.keys(resp).map((item) => renderNews(resp[item].title, resp[item].body, resp[item].image));
       }
     });
   });

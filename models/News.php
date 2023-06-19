@@ -6,9 +6,9 @@ class News extends Model {
     public string $image;
 
     public function __construct($title, $body, $image) {
-        $this->title;
-        $this->body;
-        $this->image;
+        $this->title = $title;
+        $this->body = $body;
+        $this->image = $image;
     }
 
     public function getTitle() : string {

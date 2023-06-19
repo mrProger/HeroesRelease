@@ -16,4 +16,9 @@ class ShopController {
             echo json_encode(array("response" => "Данные не пришли или пришли некорректно"));
         }
     }
+
+    public static function getItems() {
+        $items = QueryController::getItemsQuery();
+        echo $items;
+    }
 }

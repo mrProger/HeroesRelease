@@ -7,10 +7,10 @@ class Item extends Model {
     public string $image;
 
     public function __construct($name, $price, $money_type, $image) {
-        $this->name;
-        $this->price;
-        $this->money_type;
-        $this->image;
+        $this->name = $name;
+        $this->price = $price;
+        $this->money_type = $money_type;
+        $this->image = $image;
     }
 
     public function getName() : string {

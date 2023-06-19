@@ -64,7 +64,7 @@
 
   <div class="news">
     <div class="container">
-      <div class="container-news justify-content-center row">
+      <!--<div class="container-news justify-content-center row">
         <div class="col-6">
           <div class="block-news">
             <img src="/pages/img/news.png" />
@@ -84,7 +84,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 
@@ -118,6 +118,8 @@
 <script src="/pages/js/owl.carousel.min.js"></script>
 <!--JS-->
 <script src="/pages/js/script.js"></script>
+<!--Query JS-->
+<script src="/pages/js/query.js"></script>
 <!--JS Snow-->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -126,6 +128,7 @@
       snow.classList.add("snow2");
       document.body.appendChild(snow);
     }
+    getNewsQuery();
   });
 </script>
 
